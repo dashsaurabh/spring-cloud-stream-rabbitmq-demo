@@ -1,4 +1,4 @@
-package com.progressivecoder.demo.subscriberapplication;
+package com.progressivecoder.anothersubscriber;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,15 +7,15 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 
 @SpringBootApplication
 @EnableBinding(MessageChannel.class)
-public class SubscriberApplication {
+public class AnotherSubscriberApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SubscriberApplication.class, args);
+		SpringApplication.run(AnotherSubscriberApplication.class, args);
 	}
 
 	@StreamListener(MessageChannel.MESSAGES)
-	public void handleMessage(Message message){
-		System.out.println("Subscriber Received Message is: " + message);
+	public void handleMessage(Message message) {
+		System.out.println("Another Subscriber Received Message is: " + message);
 	}
 
 	public static class Message{
