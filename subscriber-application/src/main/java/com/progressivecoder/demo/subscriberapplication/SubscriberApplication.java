@@ -14,27 +14,14 @@ public class SubscriberApplication {
 	}
 
 	@StreamListener(MessageChannel.MESSAGES)
-	public void handleMessage(Message message){
+	public void handleMessage(String message) throws Exception{
+
+		System.out.println(message);
+
+		if(message.contains("leave"))
+			throw new Exception("Someone wants a vacation! Reject the leave application");
+
 		System.out.println("Subscriber Received Message is: " + message);
-	}
-
-	public static class Message{
-		private String message;
-
-		public String getMessage() {
-			return message;
-		}
-
-		public void setMessage(String message) {
-			this.message = message;
-		}
-
-		@Override
-		public String toString() {
-			return "Message{" +
-					"message='" + message + '\'' +
-					'}';
-		}
 	}
 
 }

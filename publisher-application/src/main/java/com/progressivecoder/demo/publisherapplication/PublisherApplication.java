@@ -27,25 +27,9 @@ class MessagePublisher{
 
 	@GetMapping(value = "/api/publish")
 	public void sendMessage(){
-		Message message = new Message("Hello World from Publisher");
+		String message = "I want leave";
 
 		source.output().send(MessageBuilder.withPayload(message).build());
 
-	}
-}
-
-class Message{
-	String message;
-
-	public Message(String message) {
-		this.message = message;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 }

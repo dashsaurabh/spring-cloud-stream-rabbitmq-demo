@@ -14,7 +14,13 @@ public class AnotherSubscriberApplication {
 	}
 
 	@StreamListener(MessageChannel.MESSAGES)
-	public void handleMessage(Message message) {
+	public void handleMessage(String message) throws Exception {
+
+		System.out.println(message);
+
+		if(message.contains("leave"))
+			throw new Exception("Some wants a vacation! Reject the leave application");
+
 		System.out.println("Another Subscriber Received Message is: " + message);
 	}
 
